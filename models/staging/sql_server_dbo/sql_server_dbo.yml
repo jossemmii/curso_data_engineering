@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: sql_server_dbo # name of the source
-    schema: sql_server_dbo # this is the schema our raw data lives in
-    database: ALUMNO19_DEV_BRONZE_DB # this is the name of our database
+  - name: sql_server_dbo
+    schema: sql_server_dbo
+    database: ALUMNO19_DEV_BRONZE_DB
     quoting:
       database: false
       schema: false
@@ -15,8 +15,11 @@ sources:
       - name: addresses
         loaded_at_field: _fivetran_synced
         columns:
-          - name: address
           - name: address_id
+            data_tests:
+              - unique
+              - not null
+          - name: address
           - name: country
           - name: state
           - name: zipcode
